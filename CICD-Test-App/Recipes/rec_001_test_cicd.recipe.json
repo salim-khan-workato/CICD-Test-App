@@ -1,7 +1,7 @@
 {
   "name": "REC-001-Test-CICD",
   "description": "",
-  "version": 4,
+  "version": 6,
   "private": true,
   "concurrency": 1,
   "code": {
@@ -10,25 +10,22 @@
     "name": "scheduled_event",
     "as": "acbc0229",
     "title": null,
-    "description": "<span class=\"provider\">Trigger</span> every 5 minutes",
+    "description": "<span class=\"provider\">Trigger</span> on a <span class=\"provider\">custom schedule</span>",
     "keyword": "trigger",
+    "dynamicPickListSelection": {
+      "time_unit": "Custom schedule"
+    },
     "input": {
-      "time_unit": "minutes",
-      "trigger_every": "5"
+      "time_unit": "custom_schedule"
     },
     "extended_input_schema": [
       {
-        "control_type": "integer",
-        "default": "5",
+        "control_type": "cron",
         "enforce_template_mode": true,
-        "extends_schema": true,
-        "hint": "Define repeating schedule. Enter whole numbers only.\n                        This field can be set to a minimum of 5 minutes.",
-        "label": "Trigger every",
-        "name": "trigger_every",
+        "hint": "                        Cron expressions are written as: <b>[minute]  [hour]  [day of month]  [month]  [day of week]</b>.\n                        <a href=\"https://crontab.guru/\" target=\"_blank\">Learn more</a>\n",
+        "label": "Cron expression",
+        "name": "cron_expression",
         "optional": false,
-        "suffix": {
-          "text": "minutes"
-        },
         "type": "string"
       },
       {
@@ -67,7 +64,7 @@
         "keyword": "action",
         "input": {
           "user_logs_enabled": "false",
-          "message": "#{_dp('{\"pill_type\":\"output\",\"provider\":\"clock\",\"line\":\"acbc0229\",\"path\":[\"scheduled_day\"]}')}"
+          "message": "#{_dp('{\"pill_type\":\"output\",\"provider\":\"clock\",\"line\":\"acbc0229\",\"path\":[\"scheduled_day\"]}')}+#{_dp('{\"pill_type\":\"output\",\"provider\":\"clock\",\"line\":\"acbc0229\",\"path\":[\"scheduled_month\"]}')}"
         },
         "extended_input_schema": [
           {
@@ -231,7 +228,7 @@
         "keyword": "action",
         "input": {
           "user_logs_enabled": "false",
-          "message": "#{_dp('{\"pill_type\":\"output\",\"provider\":\"logger\",\"line\":\"4bcf4782\",\"path\":[\"message\"]}')}"
+          "message": "#{_dp('{\"pill_type\":\"output\",\"provider\":\"logger\",\"line\":\"4bcf4782\",\"path\":[\"message\"]}')}+#{_dp('{\"pill_type\":\"output\",\"provider\":\"rest\",\"line\":\"8222cb3a\",\"path\":[\"body\"]}')}"
         },
         "extended_input_schema": [
           {
