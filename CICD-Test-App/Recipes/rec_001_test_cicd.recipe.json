@@ -1,7 +1,7 @@
 {
   "name": "REC-001-Test-CICD",
   "description": "",
-  "version": 4,
+  "version": 7,
   "private": true,
   "concurrency": 1,
   "code": {
@@ -10,8 +10,11 @@
     "name": "scheduled_event",
     "as": "acbc0229",
     "title": null,
-    "description": "<span class=\"provider\">Trigger</span> every 5 minutes",
+    "description": "<span class=\"provider\">Trigger</span> on a <span class=\"provider\">specified schedule</span>",
     "keyword": "trigger",
+    "dynamicPickListSelection": {
+      "time_unit": "Minutes"
+    },
     "input": {
       "time_unit": "minutes",
       "trigger_every": "5"
@@ -67,7 +70,7 @@
         "keyword": "action",
         "input": {
           "user_logs_enabled": "false",
-          "message": "#{_dp('{\"pill_type\":\"output\",\"provider\":\"clock\",\"line\":\"acbc0229\",\"path\":[\"scheduled_day\"]}')}"
+          "message": "#{_dp('{\"pill_type\":\"output\",\"provider\":\"clock\",\"line\":\"acbc0229\",\"path\":[\"scheduled_day\"]}')}+#{_dp('{\"pill_type\":\"output\",\"provider\":\"clock\",\"line\":\"acbc0229\",\"path\":[\"scheduled_month\"]}')}"
         },
         "extended_input_schema": [
           {
@@ -231,7 +234,7 @@
         "keyword": "action",
         "input": {
           "user_logs_enabled": "false",
-          "message": "#{_dp('{\"pill_type\":\"output\",\"provider\":\"logger\",\"line\":\"4bcf4782\",\"path\":[\"message\"]}')}"
+          "message": "#{_dp('{\"pill_type\":\"output\",\"provider\":\"logger\",\"line\":\"4bcf4782\",\"path\":[\"message\"]}')}+#{_dp('{\"pill_type\":\"output\",\"provider\":\"rest\",\"line\":\"8222cb3a\",\"path\":[\"body\"]}')}"
         },
         "extended_input_schema": [
           {
