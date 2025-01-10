@@ -1,7 +1,7 @@
 {
   "name": "REC-001-Test-CICD",
   "description": "",
-  "version": 6,
+  "version": 7,
   "private": true,
   "concurrency": 1,
   "code": {
@@ -10,10 +10,10 @@
     "name": "scheduled_event",
     "as": "acbc0229",
     "title": null,
-    "description": "<span class=\"provider\">Trigger</span> on a <span class=\"provider\">custom schedule</span>",
+    "description": "<span class=\"provider\">Trigger</span> on a <span class=\"provider\">specified schedule</span>",
     "keyword": "trigger",
     "dynamicPickListSelection": {
-      "time_unit": "Custom schedule"
+      "time_unit": "Minutes"
     },
     "input": {
       "time_unit": "custom_schedule"
